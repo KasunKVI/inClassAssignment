@@ -5,6 +5,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.apache.commons.lang3.StringUtils;
 
 import java.io.IOException;
 
@@ -15,8 +16,7 @@ public class Customer extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         String uri = req.getRequestURI();
-        String[] segments = uri.split("/");
-        String lastSegment = segments[segments.length - 1];
+        String lastSegment = StringUtils.substringAfterLast(uri, "/");
 
         String name = req.getParameter("name");
         String contact = req.getParameter("contact");
