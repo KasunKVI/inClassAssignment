@@ -14,9 +14,14 @@ public class Customer extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+        String uri = req.getRequestURI();
+        String[] segments = uri.split("/");
+        String lastSegment = segments[segments.length - 1];
+
         String name = req.getParameter("name");
         String contact = req.getParameter("contact");
 
+        System.out.println(lastSegment);
         System.out.println("Name : "+name +"\n" + "Contact : "+contact);
 
     }
